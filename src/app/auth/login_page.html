@@ -1,0 +1,49 @@
+<!-- BLOCK: LOGIN_PAGE -->
+<div class="card-component">
+  <div class="flex min-h-full flex-col justify-center px-6 py-8 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <h2 class="font-bold">Login</h2>
+    </div>
+
+    <div class="mt-10">
+      <form
+        class="space-y-6"
+        id="login-form"
+        hx-post="/auth/login"
+        hx-trigger="submit"
+        hx-push-url="true"
+        hx-target="body"
+      >
+        <div>
+          <label for="email">Email</label>
+          <div class="mt-2">
+            <input name="email" type="email" />
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center">
+            <label for="password">Password</label>
+          </div>
+          <div class="mt-2">
+            <input
+              name="password"
+              type="password"
+              autocomplete="current-password"
+            />
+          </div>
+        </div>
+
+        <div>
+          <button type="submit" class="app-button">Masuk</button>
+        </div>
+      </form>
+
+      <p class="mt-10 text-center text-sm/6 text-gray-500">
+        Belum memiliki akun ?
+        <a href="/auth/register">daftar disini</a>
+      </p>
+    </div>
+  </div>
+</div>
+<!-- ENDBLOCK: LOGIN_PAGE -->

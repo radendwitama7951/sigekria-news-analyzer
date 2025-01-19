@@ -1,0 +1,79 @@
+<div id="search-component">
+  <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only"
+    >Search</label
+  >
+  <form
+    id="analyze-search-form"
+    class="flex w-full justify-center gap-3"
+    hx-get="/analyze"
+    hx-target="#analyze-result-component"
+    hx-trigger="submit throttle:5s"
+    hx-push-url="false"
+    hx-swap="innerHTML"
+    hx-indicator="#analyze-loading"
+  >
+    <input
+      id="analyze-search-input"
+      type="text"
+      name="url"
+      class="p-3 w-2/5"
+      placeholder="News URL"
+      required
+      value="https://news.detik.com/internasional/d-7734531/gencatan-senjata-di-gaza-presiden-israel-bicara-pemulangan-sandera"
+    />
+    <button class="flex-none bg-white primary-btn">
+      <svg
+        width="2em"
+        height="3em"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-7 h-7 pointer-events-none"
+      >
+        <path
+          d="M19.593 13.812c-.196.287-.455.53-.758.710L8.594 20.648c-1.13.679-2.591.348-3.262-.735a2.226 2.226 0 01-.25-1.772c.522-1.883.81-3.766.866-5.65a23.312 23.312 0 00-.534-5.66c-.269-1.243.558-2.484 1.845-2.77a2.396 2.396 0 011.811.308l9.88 6.251c1.09.69 1.378 2.12.643 3.193zm-1.53-1.897L8.18 5.661a.79.79 0 00-.598-.101c-.43.095-.704.508-.615.921.38 1.75.573 3.5.577 5.249l3.36.02a.76.76 0 01.771.776.804.804 0 01-.815.765l-3.361-.02a25.37 25.37 0 01-.885 5.239.738.738 0 00.083.587c.223.361.709.47 1.085.245l10.243-6.126a.81.81 0 00.253-.237.749.749 0 00-.215-1.064z"
+          fill="currentcolor"
+          fill-rule="evenodd"
+          style="--darkreader-inline-fill: currentcolor"
+          data-darkreader-inline-fill=""
+        ></path>
+      </svg>
+    </button>
+  </form>
+</div>
+
+<!-- BLOCK: LOADING_INDICATOR -->
+<h2
+  id="analyze-loading"
+  class="text-neutral-200 mb-8 analyze-loading-indicator htmx-indicator"
+>
+  loading...
+  <br />
+</h2>
+
+<!-- ENDBLOCK: LOADING_INDICATOR -->
+
+<style>
+  .htmx-indicator {
+    opacity: 0;
+    transition: opacity 1000ms ease-in;
+  }
+  /* .htmx-request .htmx-indicator { */
+  /*   opacity: 1; */
+  /* } */
+  /* .htmx-request.htmx-indicator { */
+  /*   opacity: 1; */
+  /* } */
+  .analyze-loading-indicator {
+    display: none;
+  }
+  .htmx-request .analyze-loading-indicator {
+    display: inline;
+  }
+  .htmx-request.analyze-loading-indicator {
+    display: inline;
+  }
+</style>
+
+<script type="text/javacript">
+  analyzeSearchInput = document.querySelector("#analyze-search-input");
+</script>

@@ -1,0 +1,79 @@
+<div id="drawer-head" class="fixed top-0 left-0 z-50">
+  <div class="flex items-center p-4 w-80 h-16 bg-transparent">
+    <button
+      id="drawer-button"
+      class="icon-btn"
+      type="button"
+      aria-controls="drawer-example"
+      onclick="toggleDrawer(this)"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+
+    <h5
+      id="drawer-backdrop-label"
+      class="text-base font-semibold uppercase text-neutral-800"
+    >
+      History
+    </h5>
+  </div>
+</div>
+
+<div
+  id="history-drawer"
+  class="drawer-list"
+  tabindex="-1"
+  aria-labelledby="drawer-label"
+>
+  <div class="overflow-y-auto">
+    <ul class="space-y-2 font-medium flex flex-col-reverse">
+      <!-- BLOCK: HISTORY LIST -->
+      {{#each history}}
+      <li>
+        <a
+          data-history-url="{{ this.url }}"
+          hx-get="/analyze?url={{ this.url }}"
+          hx-trigger="click throttle:3s"
+          hx-target="#analyze-result-component"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 text-sm dark:hover:bg-gray-700 hover:text-neutral-200 group"
+          onclick="loadNewsHistory(this)"
+        >
+          <!-- BLOCK: HISTORY_IDENTIFIER -->
+          <span class="ms-3">{{ this.title }}</span>
+          <!-- ENDBLOCK: HISTORY_IDENTIFIER -->
+        </a>
+      </li>
+      {{/each}}
+      <!-- ENDBLOCK: HISTORY LIST -->
+    </ul>
+  </div>
+</div>
+
+<style type="text/tailwindcss">
+  .drawer-list {
+    @apply fixed top-16
+      pb-80
+      -left-80 z-40
+      h-screen pt-0 px-8
+      overflow-y-auto transition-transform
+      bg-white w-80
+      bg-gray-800;
+  }
+</style>
+
+<script type="text/javascript">
+  historyDrawer = document.querySelector("#history-drawer");
+  historyDrawerIsShow = false;
+</script>

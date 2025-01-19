@@ -1,0 +1,22 @@
+<!-- Inline content gonna get consummed by parent component -->
+{{#*inline "content_component"}}
+<p>auth page works!</p>
+<!-- BLOCK: CHILD_COMPONENT -->
+<div id="auth-page">{{> (lookup this "child_component" ) }}</div>
+
+<style type="text/tailwindcss">
+  #auth-page {
+    @apply flex
+      flex-row
+      justify-center
+      items-center
+      w-full
+      min-h-dvh;
+  }
+</style>
+<!-- ENDBLOCK: CHILD_COMPONENT -->
+{{/inline}}
+
+<!-- BLOCK: PARENT_COMPONENT -->
+{{> index_html}}
+<!-- ENDBLOCK: PARENT_COMPONENT -->

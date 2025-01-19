@@ -1,0 +1,67 @@
+<!-- BLOCK: INLINE_CONTENT_COMPONENT -->
+{{#*inline "content_component"}}
+<!-- BLOCK: TEMPLATE -->
+<div id="home-page" class="pt-32">
+  <!-- BLOCK: HISTORY_DRAWER -->
+  <!-- {{!-- > history_drawer_component --}} -->
+  <div
+    id="history-drawer-component"
+    hx-get="/{{ user_id }}/history"
+    hx-trigger="load, submit from:#analyze-search-form delay:6s"
+  ></div>
+  <!-- ENDBLOCK: HISTORY_DRAWER -->
+
+  <!-- BLOCK: MAIN_CONTENT -->
+  <!-- BLOCK: TITLE_CONTENT -->
+  <div class="flex flex-col items-center w-100 mb-10">
+    <h1 class="title">{{ title }}</h1>
+    <h2 class="subtitle">{{ subtitle }}</h2>
+  </div>
+  <!-- ENDBLOCK: TITLE_CONTENT -->
+
+  <!-- BLOCK: ANALYZER_SEARCH_COMPONENT -->
+  {{> analyze_search_component }}
+  <!-- ENDBLOCK: ANALYZER_SEARCH_COMPONENT -->
+
+  <!-- BLOCK: ANALYZER_RESULT_COMPONENT -->
+  <div id="analyze-result-component" class="flex w-full justify-center"></div>
+  <!-- {{!-- > analyzer_result_component --}} -->
+  <!-- ENDBLOCK: ANALYZER_RESULT_COMPONENT -->
+</div>
+<!-- BLOCK: TEMPLATE -->
+
+<style type="text/tailwindcss">
+  #home-page {
+    @apply flex 
+      flex-col 
+      items-center
+      my-20;
+  }
+
+  .title {
+    @apply mb-4 text-4xl
+      font-extrabold tracking-normal
+      leading-none text-gray-900
+      dark:text-white lg:text-6xl md:text-5xl;
+  }
+  .subtitle {
+    @apply mb-4 text-xl
+      font-normal tracking-tight
+      leading-none text-gray-900
+      dark:text-white text-white;
+  }
+
+  #search-component {
+    @apply w-screen mb-10;
+  }
+
+  #analyzer-result-component {
+  }
+</style>
+
+{{/inline}}
+<!-- ENDBLOCK: INLINE_CONTENT_COMPONENT -->
+
+<!-- BLOCK: PARENT_COMPONENT -->
+{{> index_html}}
+<!-- ENDBLOCK: PARENT_COMPONENT -->

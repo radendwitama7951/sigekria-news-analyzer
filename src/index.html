@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+    <link href="/assets/styles.css" rel="stylesheet" />
+    <script src="/assets/scripts.js"></script>
+
+    <!--- Import -->
+    <script
+      src="https://unpkg.com/htmx.org@2.0.4"
+      integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="https://unpkg.com/htmx-ext-sse@2.2.2/sse.js"></script> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      @tailwind base;
+      @layer base {
+        body {
+          @apply overflow-auto;
+        }
+        h1 {
+          @apply text-2xl;
+        }
+
+        h2 {
+          @apply text-xl;
+        }
+
+        h3 {
+          @apply text-lg;
+        }
+
+        p {
+          @apply mb-3;
+        }
+
+        a {
+          @apply cursor-pointer text-indigo-600 hover:text-indigo-500;
+        }
+
+        label {
+          @apply block text-sm/6 font-medium text-gray-900;
+        }
+
+        input {
+          @apply block
+            rounded-md
+            bg-white
+            px-3
+            py-1.5
+            text-base
+            text-gray-900
+            outline
+            outline-1
+            -outline-offset-1
+            outline-gray-300
+            placeholder:text-gray-400
+            focus:outline
+            focus:outline-2
+            focus:-outline-offset-2
+            focus:outline-indigo-600
+            sm:text-sm/6;
+        }
+
+        button {
+        }
+      }
+
+      @tailwind components;
+      @tailwind utilities;
+
+      body {
+        background-color: #1f1f1f;
+      }
+
+      .primary-btn {
+        @apply text-white
+          bg-blue-700
+          hover:bg-blue-800
+          focus:ring-4
+          focus:outline-none
+          focus:ring-blue-300
+          font-medium rounded-lg
+          text-sm
+          px-4
+          py-2
+          dark:bg-blue-600
+          dark:hover:bg-blue-700
+          dark:focus:ring-blue-800;
+      }
+
+      .icon-btn {
+        @apply text-white
+            focus:outline-none
+            font-medium rounded-full
+          px-2 py-2
+          hover:bg-white/10;
+      }
+
+      .app-input {
+        @apply block
+          w-full
+          rounded-md
+          bg-white
+          px-3
+          py-1.5
+          text-base
+          text-gray-900
+          outline
+          outline-1
+          -outline-offset-1
+          outline-gray-300
+          placeholder:text-gray-400
+          focus:outline
+          focus:outline-2
+          focus:-outline-offset-2
+          focus:outline-indigo-600
+          sm:text-sm/6;
+      }
+
+      .app-button {
+        @apply flex
+          w-full
+          justify-center
+          rounded-md
+          bg-indigo-600
+          px-3
+          py-1.5
+          text-sm/6
+          font-semibold
+          text-white
+          shadow-sm
+          hover:bg-indigo-500
+          focus-visible:outline
+          focus-visible:outline-2
+          focus-visible:outline-offset-2
+          focus-visible:outline-indigo-600;
+      }
+
+      .card-component {
+        @apply block
+          min-w-32
+          p-6
+          bg-white
+          border
+          border-gray-200
+          rounded-lg
+          /* dark:bg-gray-800 */
+          /* dark:border-gray-700; */;
+      }
+
+      .card-body {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body hx-boost="false">
+    {{> content_component }}
+  </body>
+</html>

@@ -1,0 +1,21 @@
+/* styles.css */
+
+html,
+body {
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  /* overflow: scroll !important; */
+}
+
+/* body { */
+/*   background-color: #1f1f1f; */
+/* } */
+
+body {
+  background-color: #1f1f1f;
+}
+.root {
+  min-height: 100vh;
+}

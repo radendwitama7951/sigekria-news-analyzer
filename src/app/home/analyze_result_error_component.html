@@ -1,0 +1,28 @@
+<div class="card-component analyzer-result-component-card">
+  <h1 class="text-pink-800 overflow-x-scroll">Error: {{ error }}</h1>
+  <div class="card-body">
+    <br />
+    <h2>detail: {{ message }}</h2>
+    <br />
+    <ul
+      class="space-y-4 text-gray-500 list-disc list-inside dark:text-gray-400"
+    >
+      <li>
+        instructions
+        <ol class="ps-5 mt-2 space-y-1 list-decimal list-inside">
+          <!-- BLOCK: INSTRUCTION_LIST -->
+          {{#each instructions }}
+          <li>{{ this }}</li>
+          {{/each}}
+          <!-- ENDBLOCK: INSTRUCTION_LIST -->
+        </ol>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<style type="text/tailwindcss">
+  .analyzer-result-component-card {
+    @apply lg:w-6/12 w-3/4;
+  }
+</style>

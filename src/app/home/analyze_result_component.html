@@ -1,0 +1,44 @@
+<div
+  id="{{ news_content.id }}"
+  class="card-component analyzer-result-component-card"
+>
+  <h1>{{ news_content.title }}</h1>
+  <div class="card-body">
+    <br />
+    <h2>Authors:</h2>
+    <p>{{ news_content.authors }}</p>
+    <br />
+    <h2>Publication Date:</h2>
+    <p>{{ news_content.publication_date }}</p>
+    <h2>Summary:</h2>
+    <div id="summary"></div>
+  </div>
+</div>
+
+<style type="text/tailwindcss">
+  .analyzer-result-component-card {
+    @apply lg:w-6/12 w-3/4;
+  }
+</style>
+
+<script>
+  if (newsSummarizeEvtSource) newsSummarizeEvtSource.close();
+  newsSummarizeEvtSource = new EventSource("{{{ summarizer_endpoint }}}");
+
+  newsSummarizeEvtSource.onmessage = (evt) => {
+    console.log(`Message: ${evt.data}`);
+    document.querySelector("#summary").innerHTML += evt.data;
+  };
+
+  newsSummarizeEvtSource.error = (evt) => {
+    console.log("Summarizing error");
+    console.log(evt);
+    newsSummarizeEvtSource.close();
+  };
+
+  newsSummarizeEvtSource.addEventListener("done", (evt) => {
+    console.log("Done summarizing...");
+    console.log(evt);
+    newsSummarizeEvtSource.close();
+  });
+</script>
